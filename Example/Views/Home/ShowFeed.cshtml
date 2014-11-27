@@ -1,0 +1,32 @@
+﻿@using Example.Extensions
+@{
+    ViewBag.Title = "Example passle feed";
+    Layout = "~/Views/Shared/_Layout.cshtml"; ;
+    var passleFeedShortCode = "2cxn";
+    var passleFeedPageToDisplay = 1;
+    var passleFeedNumberOfPostsToDisplayPerPage = 15;
+}
+
+@* Please note: The feed must be rendered in a container with the class "passle-shortcode" *@
+<div class="passle-shortcode">
+    @Html.RenderXml(
+        String.Format("https://www.passle.net/pluginfeed/{0}/{1}/{2}", 
+            passleFeedShortCode, 
+            passleFeedPageToDisplay, 
+            passleFeedNumberOfPostsToDisplayPerPage
+        ), 
+        "https://d14tqcyg1o920w.cloudfront.net/Wordpress/XSLT/PassleFeed.xsl" , 
+        null
+    )
+</div>
+
+@section CSS
+{
+    <link id="dynamic-css-link" href="https://www.passle.net/Style/PublishedPassleCSS?passleId=@passleFeedShortCode" rel="stylesheet" >
+    <link href="https://d14tqcyg1o920w.cloudfront.net/Wordpress/css/WordPressPlugin.css?v=1.0.0.0" rel="stylesheet" >
+}
+
+@section JavaScript
+{
+    <script type="text/javascript" src="https://d14tqcyg1o920w.cloudfront.net/Wordpress/js/wordpressplugin.js"></script>
+}
