@@ -9,7 +9,10 @@ The files which will be of most interest are:
 
  `HtmlHelperXmlExtensions.cs` 
  
-This is a `HtmlHelper` extension which has one static method `RenderXml`. This method takes the `xml` feed and a path to an `xslt` file. It then transforms the `xml` using the `xslt` to generate the markup, which is returned as an `HtmlString`.
+This is a `HtmlHelper` extension which has one static method `RenderXml`. This 
+method takes the `xml` feed and a path to an `xslt` file. It then transforms 
+the `xml` using the `xslt` to generate the markup, which is returned as an 
+`HtmlString`.
 
 `ShowFeed.cshtml`
 
