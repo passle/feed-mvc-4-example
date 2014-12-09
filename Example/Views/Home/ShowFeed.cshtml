@@ -9,14 +9,10 @@
 
 @* Please note: The feed must be rendered in a container with the class "passle-shortcode" *@
 <div class="passle-shortcode">
-    @Html.RenderXml(
-        String.Format("https://www.passle.net/pluginfeed/{0}/{1}/{2}", 
-            passleFeedShortCode, 
-            passleFeedPageToDisplay, 
-            passleFeedNumberOfPostsToDisplayPerPage
-        ), 
-        "https://www.passle.net/api/feed/xslt",
-        null
+    @Html.RenderFeed(
+        passleFeedShortCode, 
+        passleFeedPageToDisplay, 
+        passleFeedNumberOfPostsToDisplayPerPage
     )
 </div>
 

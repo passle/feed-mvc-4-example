@@ -15,6 +15,27 @@ namespace Example.Extensions
         /// Render Passle feed
         /// </summary>
         /// <param name="helper">Html helper class</param>
+        /// <param name="shortcode">Passle shortcode</param>
+        /// <param name="pageNumber">Page number</param>
+        /// <param name="postsPerPage">Posts to display per page</param>
+        /// <returns>Html string output</returns>
+        public static HtmlString RenderFeed(this HtmlHelper helper, String shortcode, int pageNumber, int postsPerPage)
+        {
+            string xmlPath = String.Format("https://www.passle.net/pluginfeed/{0}/{1}/{2}",
+                shortcode,
+                pageNumber,
+                postsPerPage
+            );
+            string xsltPath = "https://d14tqcyg1o920w.cloudfront.net/Wordpress/XSLT/PassleFeed.xsl";
+            IDictionary<string, string> parameters = null;
+
+            return RenderXml(helper, xmlPath, xsltPath, parameters);
+        }
+
+        /// <summary>
+        /// Parse xml feed
+        /// </summary>
+        /// <param name="helper">Html helper class</param>
         /// <param name="xmlPath">Path to xml</param>
         /// <param name="xsltPath">Path to xslt</param>
         /// <param name="parameters">Optional paramaters</param>
